@@ -99,6 +99,7 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
+    FLAKE = "~/.config/home-manager";
   };
 
   # Let Home Manager install and manage itself.
