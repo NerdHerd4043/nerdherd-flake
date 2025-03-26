@@ -3,6 +3,7 @@
 {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
+    (modulesPath + "/virtualisation/qemu-vm.nix")
   ];
 
   boot.initrd.availableKernelModules = [
@@ -38,4 +39,18 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   services.spice-vdagentd.enable = true;
   services.qemuGuest.enable = true;
+
+  virtualisation.vmVariantWithBootLoader = {
+    # following configuration is added only when building VM with build-vm
+    virtualisation = {
+      memorySize = 8000; # Use 2048MiB memory.
+      cores = 4;
+    };
+  };
+
+  virtualisation.qemu.networkingOptions = lib.mkForce [
+    "-device e1000,netdev=net0"
+    "-netdev user,id=net0,hostfwd=tcp:127.0.0.1:2222-:22,\${QEMU_NET_OPTS:+,$QEMU_NET_OPTS}"
+  ];
+
 }
