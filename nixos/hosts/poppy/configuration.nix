@@ -9,7 +9,9 @@
 
   hardware.graphics = {
     enable = true;
-    enable32Bit = true;
+    # TODO: Add relevant driver packages
+    # https://wiki.nixos.org/wiki/Accelerated_Video_Playback
+    # extraPackages = with pkgs; [ ];
   };
 
   users = {
