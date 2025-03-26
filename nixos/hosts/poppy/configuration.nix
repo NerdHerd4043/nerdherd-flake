@@ -1,13 +1,11 @@
-{ config, ... }:
+{ ... }:
 {
   imports = [
     # TODO: Add hardware-configuration.nix
     ./test-hw-conf.nix
   ];
 
-  networking = {
-    hostName = "poppy";
-  };
+  networking.hostName = "poppy";
 
   hardware.graphics = {
     enable = true;
@@ -32,33 +30,6 @@
 
       root.openssh.authorizedKeys.keys = [
         # TODO: (Optional) add root keys for ease of deployment
-      ];
-    };
-  };
-
-  nix = {
-    optimise.automatic = true;
-    channel.enable = false;
-    settings = {
-      auto-optimise-store = true;
-
-      # Flakes
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-      trusted-users = [
-        "nerdherd4043"
-      ];
-
-      substituters = [
-        "https://cache.nixos.org"
-        "https://nix-community.cachix.org"
-      ];
-
-      trusted-substituters = config.nix.settings.substituters;
-      trusted-public-keys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
     };
   };
