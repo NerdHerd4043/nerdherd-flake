@@ -56,14 +56,16 @@
       jnoortheen.nix-ide
     ];
     # Add extra packages that VS Code might need
-    package = pkgs.vscode.fhsWithPackages (ps: with ps; [
-      # rustup
-      zlib
-      openssl.dev
-      pkg-config
-      nil
-      nixpkgs-fmt
-    ]);
+    package = pkgs.vscode.fhsWithPackages (
+      ps: with ps; [
+        # rustup
+        zlib
+        openssl.dev
+        pkg-config
+        nil
+        nixpkgs-fmt
+      ]
+    );
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
