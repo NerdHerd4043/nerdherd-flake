@@ -7,14 +7,6 @@
 
   networking = {
     hostName = "poppy";
-    openssh = {
-      enable = true;
-      openFirewall = true;
-      settings = {
-        PasswordAuthentication = false;
-        KbdInteractiveAuthentication = false;
-      };
-    };
   };
 
   hardware.graphics = {

@@ -10,6 +10,7 @@ in
 {
   imports = [
     ./audio.nix
+    ./networking.nix
   ];
 
   options.herd.defaults = mkEnableOption "herd defaults" // {
@@ -18,5 +19,6 @@ in
 
   config.herd = mkIf cfg.defaults {
     audio.enable = mkTrue;
+    networking.enable = mkTrue;
   };
 }
