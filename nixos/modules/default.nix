@@ -10,6 +10,7 @@ in
 {
   imports = [
     ./audio.nix
+    ./boot.nix
     ./networking.nix
     ./nix.nix
   ];
@@ -20,6 +21,7 @@ in
 
   config.herd = mkIf cfg.defaults {
     audio.enable = mkTrue;
+    boot.enable = mkTrue;
     networking.enable = mkTrue;
     nix.enable = mkTrue;
   };
