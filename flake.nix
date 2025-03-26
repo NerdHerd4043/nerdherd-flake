@@ -57,7 +57,7 @@
                 inputs.rust-overlay.overlays.default
               ];
             };
-            modules = [ ./home.nix ];
+            modules = [ ./home/hosts/nerdherd4043.nix ];
           };
         };
       };
