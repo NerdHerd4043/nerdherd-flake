@@ -5,6 +5,10 @@
     ./test-hw-conf.nix
   ];
 
+  herd = {
+    networking.wifi.enable = true;
+  };
+
   networking.hostName = "poppy";
 
   hardware.graphics = {
@@ -48,8 +52,9 @@
       enable = true;
       program = "/run/current-system/sw/bin/firefox --kiosk ${url}";
       extraArguments = [
-        "-d"
-        "-m last"
+        "-d" # Don't render client-side decorations
+        "-m last" # Use only the last monitor connected
+        "-s" # Allow TTY switching
       ];
       environment = {
         WLR_LIBINPUT_NO_DEVICES = "1";
