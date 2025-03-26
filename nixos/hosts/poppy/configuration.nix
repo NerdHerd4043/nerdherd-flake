@@ -36,6 +36,13 @@
     };
   };
 
+  programs.firefox = {
+    enable = true;
+    preferences = {
+      # TODO: Edit firefox preferences for accelerated video playback
+    };
+  };
+
   services.cage =
     let
       # TODO: Update to relevant URL
