@@ -1,12 +1,16 @@
 {
-  description = "Home Manager configuration for nerdherd4043";
+  description = "Nix configurations for nerdherd4043";
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
     agenix = {
@@ -23,26 +27,38 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs:
+  outputs =
     {
-      homeConfigurations = {
-        "nerdherd4043" = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            system = "x86_64-linux";
-            overlays = [
-              inputs.agenix.overlays.default
-              inputs.rust-overlay.overlays.default
-            ];
+      nixpkgs,
+      home-manager,
+      flake-parts,
+      ...
+    }@inputs:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [ ];
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
+
+      perSystem =
+        { pkgs, ... }:
+        {
+          formatter = pkgs.nixfmt-rfc-style;
+        };
+
+      flake = {
+        homeConfigurations = {
+          "nerdherd4043" = home-manager.lib.homeManagerConfiguration {
+            pkgs = import nixpkgs {
+              system = "x86_64-linux";
+              overlays = [
+                inputs.agenix.overlays.default
+                inputs.rust-overlay.overlays.default
+              ];
+            };
+            modules = [ ./home.nix ];
           };
-
-          # Specify your home configuration modules here, for example,
-          # the path to your home.nix.
-          modules = [
-            ./home.nix
-          ];
-
-          # Optionally use extraSpecialArgs
-          # to pass through arguments to home.nix
         };
       };
     };
