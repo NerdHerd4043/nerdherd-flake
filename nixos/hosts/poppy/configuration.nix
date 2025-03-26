@@ -3,6 +3,7 @@
   imports = [
     # TODO: Add hardware-configuration.nix
     ./test-hw-conf.nix
+    ./disk-configuration.nix
   ];
 
   herd = {

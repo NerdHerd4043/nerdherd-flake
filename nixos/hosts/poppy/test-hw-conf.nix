@@ -17,16 +17,6 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/acfb48a4-3c37-403e-9a3c-101dcfa00488";
-    fsType = "ext4";
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/D7FD-71FC";
-    fsType = "vfat";
-  };
-
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -40,7 +30,7 @@
   services.spice-vdagentd.enable = true;
   services.qemuGuest.enable = true;
 
-  virtualisation.vmVariantWithBootLoader = {
+  virtualisation.vmVariant = {
     # following configuration is added only when building VM with build-vm
     virtualisation = {
       memorySize = 8000; # Use 2048MiB memory.
@@ -52,5 +42,4 @@
     "-device e1000,netdev=net0"
     "-netdev user,id=net0,hostfwd=tcp:127.0.0.1:2222-:22,\${QEMU_NET_OPTS:+,$QEMU_NET_OPTS}"
   ];
-
 }
