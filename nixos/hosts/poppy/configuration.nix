@@ -29,10 +29,6 @@
           # TODO: ADD SSH KEYS BEFORE INSTALLATION
         ];
       };
-
-      root.openssh.authorizedKeys.keys = [
-        # TODO: (Optional) add root keys for ease of deployment
-      ];
     };
   };
 
