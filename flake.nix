@@ -29,6 +29,7 @@
 
   outputs =
     {
+      self,
       nixpkgs,
       home-manager,
       flake-parts,
@@ -58,6 +59,19 @@
               ];
             };
             modules = [ ./home/hosts/nerdherd4043.nix ];
+          };
+        };
+
+        nixosConfigurations = {
+          poppy = nixpkgs.lib.nixosSystem {
+            # TODO: Check arch of system
+            system = "x86_64-linux";
+            specialArgs = { inherit self inputs; };
+            modules = [
+              ./nixos/modules
+              ./nixos/hosts/poppy/configuration.nix
+              inputs.agenix.nixosModules.default
+            ];
           };
         };
       };
