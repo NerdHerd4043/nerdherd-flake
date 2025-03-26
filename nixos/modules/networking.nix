@@ -12,7 +12,7 @@ in
 {
   options.herd.networking = {
     enable = mkEnableOption "networking module";
-    wifi = mkEnableOption "wifi specific settings and services.";
+    wifi.enable = mkEnableOption "wifi specific settings and services.";
     disableSSH = mkEnableOption "disabling ssh systemd service";
   };
 
@@ -20,7 +20,7 @@ in
     # Enable networking
     networking = {
       wireless.iwd = {
-        enable = cfg.wifi;
+        enable = cfg.wifi.enable;
         settings = {
           IPv6.Enabled = true;
           Settings.AutoConnect = true;
@@ -29,7 +29,7 @@ in
 
       networkmanager = {
         enable = true;
-        wifi.backend = mkIf cfg.wifi "iwd";
+        wifi.backend = mkIf cfg.wifi.enable "iwd";
       };
     };
 
