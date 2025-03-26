@@ -12,17 +12,8 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
-    };
-
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay/stable";
+    disko = {
+      url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -51,6 +42,7 @@
               agenix
               home-manager
               nh
+              nixos-anywhere
             ];
           };
         };
@@ -77,7 +69,7 @@
             modules = [
               ./nixos/modules
               ./nixos/hosts/poppy/configuration.nix
-              inputs.agenix.nixosModules.default
+              inputs.disko.nixosModules.disko
             ];
           };
         };
