@@ -14,6 +14,8 @@ Home-Manager configurations are under [home/hosts/](./home/hosts/).
 
 Specs: **TODO**
 
+
+
 ## System Setup
 
 **WIP**
