@@ -8,9 +8,9 @@ Home-Manager configurations are under [home/hosts/](./home/hosts/).
 
 ## Systems
 
-### **P**oppy
+### *P*oppy
 
-**P**it Computer. Currently just for displaying a livestream of the current FRC event.
+***P***it Computer. Currently just for displaying a livestream of the current FRC event.
 
 Specs: **TODO**
 
