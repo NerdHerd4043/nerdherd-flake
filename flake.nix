@@ -16,6 +16,13 @@
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
   };
 
   outputs =
@@ -69,6 +76,7 @@
             modules = [
               ./nixos/modules
               ./nixos/hosts/poppy/configuration.nix
+              inputs.agenix.nixosModules.default
               inputs.disko.nixosModules.disko
             ];
           };
