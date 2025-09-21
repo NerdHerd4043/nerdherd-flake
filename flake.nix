@@ -29,7 +29,6 @@
     {
       self,
       nixpkgs,
-      home-manager,
       flake-parts,
       ...
     }@inputs:
@@ -41,22 +40,33 @@
       ];
 
       perSystem =
-        { pkgs, ... }:
+        { pkgs, system, ... }:
         {
-          formatter = pkgs.nixfmt-rfc-style;
-          devShells.default = pkgs.mkShell {
-            packages = with pkgs; [
-              agenix
-              home-manager
-              nh
-              nixos-anywhere
+          _module.args.pkgs = import inputs.nixpkgs {
+            inherit system;
+            overlays = [
+              inputs.agenix.overlays.default
             ];
+            config.allowUnfree = true;
+          };
+
+          formatter = pkgs.nixfmt-rfc-style;
+
+          devShells = {
+            default = pkgs.mkShell {
+              packages = with pkgs; [
+                agenix
+                home-manager
+                nh
+                nixos-anywhere
+              ];
+            };
           };
         };
 
       flake = {
         homeConfigurations = {
-          "nerdherd4043" = home-manager.lib.homeManagerConfiguration {
+          "nerdherd4043" = inputs.home-manager.lib.homeManagerConfiguration {
             pkgs = import nixpkgs {
               system = "x86_64-linux";
               overlays = [
