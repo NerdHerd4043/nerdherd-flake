@@ -52,6 +52,10 @@
 
           formatter = pkgs.nixfmt-rfc-style;
 
+          packages = {
+            nixos-anywhere-install = import ./pkgs/nixos-anywhere-install.nix { inherit pkgs; };
+          };
+
           devShells = {
             default = pkgs.mkShell {
               packages = with pkgs; [
