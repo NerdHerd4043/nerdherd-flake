@@ -63,6 +63,8 @@
   environment.systemPackages = with pkgs; [
     curl
     git
+    lazygit
+    neovim
     nh
     usbutils
   ];
