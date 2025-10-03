@@ -40,7 +40,8 @@
       bryan = {
         isNormalUser = true;
         description = "Bryan";
-        hashedPasswordFile = config.age.secrets.bryan-pass.path;
+        # TODO: Add bryan password
+        # hashedPasswordFile = config.age.secrets.bryan-pass.path;
         extraGroups = [
           "networkmanager"
           "video"
@@ -68,7 +69,8 @@
       ravenshade = {
         isNormalUser = true;
         description = "Zynh";
-        hashedPasswordFile = config.age.secrets.ravenshade-pass.path;
+        # TODO: Add ravenshade password
+        # hashedPasswordFile = config.age.secrets.ravenshade-pass.path;
         extraGroups = [
           "networkmanager"
           "video"
