@@ -2,7 +2,6 @@
   disko.devices = {
     disk = {
       main = {
-        # TODO: Add disk ID
         device = "/dev/sda";
         type = "disk";
         content = {

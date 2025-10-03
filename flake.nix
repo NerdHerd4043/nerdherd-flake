@@ -84,7 +84,6 @@
 
         nixosConfigurations = {
           poppy = nixpkgs.lib.nixosSystem {
-            # TODO: Check arch of system
             system = "x86_64-linux";
             specialArgs = { inherit self inputs; };
             modules = [

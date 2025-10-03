@@ -1,9 +1,8 @@
 { pkgs, ... }:
 {
   imports = [
-    # TODO: Add hardware-configuration.nix
-    ./test-hw-conf.nix
     ./disk-configuration.nix
+    ./hardware-configuration.nix
   ];
 
   herd = {
@@ -14,9 +13,10 @@
 
   hardware.graphics = {
     enable = true;
-    # TODO: Add relevant driver packages
-    # https://wiki.nixos.org/wiki/Accelerated_Video_Playback
-    # extraPackages = with pkgs; [ ];
+    extraPackages = with pkgs; [
+      # For i5-6500T:
+      intel-media-driver
+    ];
   };
 
   users = {
@@ -31,23 +31,19 @@
         ];
         hashedPassword = "$y$j9T$BN5fvfmYxHqJVGoHUmle.0$fxCfLjaVXeRYRBB1Zju5OEQN.tNic88jyLq.wYbaqZD";
         openssh.authorizedKeys.keys = [
-          # TODO: ADD SSH KEYS BEFORE INSTALLATION
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ3jJxl0RQclWmAUbA2/o5qvIt+yXzF+J3xkHQdr7PlP"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDwZSohB4Ub1uoMZ2rHM7zgK+oBl7CGakKQo3emz2z5b" # Bitwarden
         ];
       };
     };
   };
 
-  programs.firefox = {
-    enable = true;
-    preferences = {
-      # TODO: Edit firefox preferences for accelerated video playback
-    };
-  };
+  programs.firefox.enable = true;
 
   services.cage =
     let
       # TODO: Update to relevant URL
-      url = "https://nerdherd4043.org/";
+      url = "https://www.firstinspires.org/";
     in
     {
       enable = true;
@@ -58,7 +54,7 @@
         "-s" # Allow TTY switching
       ];
       environment = {
-        WLR_LIBINPUT_NO_DEVICES = "1";
+        # WLR_LIBINPUT_NO_DEVICES = "1"; # Disable input devices (maybe?)
         MOZ_ENABLE_WAYLAND = "1";
       };
       user = "nerdherd4043";
