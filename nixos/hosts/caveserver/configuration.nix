@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  config,
+  self,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./disk-configuration.nix
@@ -11,6 +16,12 @@
 
   networking.hostName = "caveserver";
 
+  age.secrets = {
+    bryan-pass.file = self + "/secrets/bryan-pass.age";
+    nullcube-pass.file = self + "/secrets/nullcube-pass.age";
+    ravenshade-pass.file = self + "/secrets/ravenshade-pass.age";
+  };
+
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
@@ -22,16 +33,45 @@
   users = {
     mutableUsers = false;
     users = {
-      nerdherd4043 = {
+      bryan = {
         isNormalUser = true;
+        description = "Bryan";
+        hashedPasswordFile = config.age.secrets.bryan-pass.path;
         extraGroups = [
           "networkmanager"
           "video"
           "wheel"
         ];
-        hashedPassword = "$y$j9T$BN5fvfmYxHqJVGoHUmle.0$fxCfLjaVXeRYRBB1Zju5OEQN.tNic88jyLq.wYbaqZD";
         openssh.authorizedKeys.keys = [
-          # TODO: Add SSH keys
+          # TODO: Add ssh keys
+        ];
+      };
+
+      nullcube = {
+        isNormalUser = true;
+        description = "NullCube";
+        extraGroups = [
+          "networkmanager"
+          "video"
+          "wheel"
+        ];
+        hashedPasswordFile = config.age.secrets.nullcube-pass.path;
+        openssh.authorizedKeys.keys = [
+          # TODO: Add ssh keys
+        ];
+      };
+
+      ravenshade = {
+        isNormalUser = true;
+        description = "Zynh";
+        hashedPasswordFile = config.age.secrets.ravenshade-pass.path;
+        extraGroups = [
+          "networkmanager"
+          "video"
+          "wheel"
+        ];
+        openssh.authorizedKeys.keys = [
+          # TODO: Add ssh keys
         ];
       };
     };
