@@ -126,15 +126,6 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    curl
-    git
-    lazygit
-    neovim
-    nh
-    usbutils
-  ];
-
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "both";

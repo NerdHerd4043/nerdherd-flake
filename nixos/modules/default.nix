@@ -13,6 +13,7 @@ in
     ./boot.nix
     ./networking.nix
     ./nix.nix
+    ./packages.nix
   ];
 
   options.herd.defaults = mkEnableOption "herd defaults" // {
@@ -24,5 +25,6 @@ in
     boot.enable = mkTrue;
     networking.enable = mkTrue;
     nix.enable = mkTrue;
+    packages.enable = mkTrue;
   };
 }
