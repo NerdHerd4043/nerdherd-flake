@@ -93,6 +93,17 @@
               inputs.disko.nixosModules.disko
             ];
           };
+
+          caveserver = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = { inherit self inputs; };
+            modules = [
+              ./nixos/modules
+              ./nixos/hosts/caveserver/configuration.nix
+              inputs.agenix.nixosModules.default
+              inputs.disko.nixosModules.disko
+            ];
+          };
         };
       };
     };
