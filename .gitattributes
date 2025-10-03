@@ -1,0 +1,46 @@
+* text=auto
+
+# Nix code
+*.nix text
+
+# Shell scripts
+*.sh text
+*.fish text
+*.theme text
+
+# Lua
+*.lua text
+
+# Other config files
+*.css text
+*.js text
+*.json text
+*.rasi text
+*.toml text
+*.conf text
+*.h text diff=c
+dunstrc text
+
+# Line endings should be preserved
+*.patch    -text
+
+# Markdown
+*.md text
+
+# Lockfiles (flake.lock)
+*.lock text -diff
+
+# Agenix
+*.age binary
+
+# Image files
+*.png binary
+*.jpeg binary
+*.jxl binary
+*.jpg binary
+*.svg binary
+
+# Audio
+*.mp3 binary
+
+
