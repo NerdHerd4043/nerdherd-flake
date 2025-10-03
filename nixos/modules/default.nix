@@ -12,6 +12,7 @@ in
     ./audio.nix
     ./boot.nix
     ./ddclient.nix
+    ./minecraft-server.nix
     ./networking.nix
     ./nix.nix
     ./packages.nix
