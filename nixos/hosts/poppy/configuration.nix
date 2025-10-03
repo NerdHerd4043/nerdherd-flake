@@ -38,12 +38,68 @@
     };
   };
 
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    preferences = {
+      "browser.sessionstore.resume_from_crash" = false;
+      "browser.newtabpage.activity-stream.showSponsored" = false;
+      "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+      "browser.urlbar.suggest.quicksuggest.sponsored" = false;
+      "browser.urlbar.quicksuggest.dataCollection.enabled" = false;
+    };
+
+    # https://wiki.nixos.org/wiki/Firefox#Advanced
+    languagePacks = [ "en-US" ];
+    policies = {
+      # Updates & Background Services
+      AppAutoUpdate = false;
+      BackgroundAppUpdate = false;
+
+      # Feature Disabling
+      DisableFirefoxStudies = true;
+      DisableFirefoxAccounts = true;
+      DisableFirefoxScreenshots = true;
+      DisableMasterPasswordCreation = true;
+      DisableProfileImport = true;
+      DisableProfileRefresh = true;
+      DisableSetDesktopBackground = true;
+      DisablePocket = true;
+      DisableTelemetry = true;
+      DisableFormHistory = true;
+      DisablePasswordReveal = true;
+
+      # Access Restrictions
+      BlockAboutConfig = false;
+      BlockAboutProfiles = true;
+
+      # UI and Behavior
+      DisplayMenuBar = "never";
+      DontCheckDefaultBrowser = true;
+      OfferToSaveLogins = false;
+
+      HttpsOnlyMode = "enabled";
+      SanitizeOnShutdown = true;
+      SkipTermsOfUse = true;
+
+      # Extensions
+      ExtensionSettings =
+        let
+          moz = short: "https://addons.mozilla.org/firefox/downloads/latest/${short}/latest.xpi";
+        in
+        {
+          "uBlock0@raymondhill.net" = {
+            install_url = moz "ublock-origin";
+            installation_mode = "force_installed";
+            updates_disabled = true;
+          };
+        };
+    };
+  };
 
   services.cage =
     let
       # TODO: Update to relevant URL
-      url = "https://www.firstinspires.org/";
+      url = "https://nerdherd4043.org/";
     in
     {
       enable = true;
@@ -56,14 +112,18 @@
       environment = {
         # WLR_LIBINPUT_NO_DEVICES = "1"; # Disable input devices (maybe?)
         MOZ_ENABLE_WAYLAND = "1";
+        MOZ_CRASHREPORTER_DISABLE = "1";
       };
       user = "nerdherd4043";
     };
 
-  # Always restart the browser when closed
-  systemd.services."cage-tty1" = {
-    preStart = "sleep 5";
-    serviceConfig.Restart = "always";
+  systemd.services = {
+    "cage-tty1" = {
+      # Wait 5 seconds to start the browser
+      preStart = "sleep 5";
+      # Always restart the browser when closed
+      serviceConfig.Restart = "always";
+    };
   };
 
   environment.systemPackages = with pkgs; [
