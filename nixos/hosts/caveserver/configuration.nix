@@ -7,8 +7,7 @@
 {
   imports = [
     ./disk-configuration.nix
-    # TODO: Hardware configuration
-    # ./hardware-configuration.nix
+    ./hardware-configuration.nix
   ];
 
   herd = {
