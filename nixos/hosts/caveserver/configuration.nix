@@ -12,9 +12,13 @@
   ];
 
   herd = {
+    ddclient.enable = true;
   };
 
-  networking.hostName = "caveserver";
+  networking = {
+    hostName = "caveserver";
+    fqdn = "emerald.nerdherd4043.org";
+  };
 
   age.secrets = {
     bryan-pass.file = self + "/secrets/bryan-pass.age";
