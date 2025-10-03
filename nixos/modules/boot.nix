@@ -21,6 +21,7 @@ in
       };
 
       loader = {
+        timeout = 2;
         efi.canTouchEfiVariables = true;
         grub = {
           enable = true;
