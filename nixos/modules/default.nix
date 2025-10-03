@@ -1,7 +1,7 @@
 { config, lib, ... }:
 let
   cfg = config.herd;
-  mkTrue = (lib.mkOverride 1100 true);
+  mkTrue = lib.mkOverride 1100 true;
   inherit (lib)
     mkIf
     mkEnableOption
@@ -11,6 +11,7 @@ in
   imports = [
     ./audio.nix
     ./boot.nix
+    ./ddclient.nix
     ./networking.nix
     ./nix.nix
     ./packages.nix
