@@ -61,7 +61,10 @@
     };
 
   # Always restart the browser when closed
-  systemd.services."cage-tty1".serviceConfig.Restart = "always";
+  systemd.services."cage-tty1" = {
+    preStart = "sleep 5";
+    serviceConfig.Restart = "always";
+  };
 
   environment.systemPackages = with pkgs; [
     curl
