@@ -39,8 +39,10 @@ in
           "flakes"
         ];
 
-        trusted-users = mkDefault [
+        trusted-users = [
           "nerdherd4043"
+          "nullcube"
+          "@wheel"
         ];
 
         substituters = [
