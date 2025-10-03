@@ -14,12 +14,10 @@ pkgs.writeShellApplication {
 
       # Create a temporary directory
       temp=$(mktemp -d)
-      temp2=$(mktemp -d)
 
       # Function to cleanup temporary directory on exit
       cleanup() {
         rm -rf "$temp"
-        rm -rf "$temp2"
       }
       trap cleanup EXIT
 
@@ -37,18 +35,12 @@ pkgs.writeShellApplication {
       echo "The public key is:"
       echo "$pub"
 
-      echo "Put disk secret here:"
-      echo "$temp2"
-
-      # echo "my-super-safe-password" > /tmp/disk-1.key
-
       read -p "Press y to continue" -n 1 -r
       if [[ $REPLY =~ ^[Yy]$ ]]
       then
         # Install NixOS to the host system with our secrets
         nixos-anywhere \
         --extra-files "$temp" \
-        --disk-encryption-keys /tmp/secret.key "$temp2/secret.key" \
         --flake "$1" \
         --target-host "$2"
       fi
