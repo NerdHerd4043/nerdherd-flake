@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   imports = [
     ./disk-configuration.nix
@@ -59,6 +59,9 @@
       };
       user = "nerdherd4043";
     };
+
+  # Always restart the browser when closed
+  systemd.services."cage-tty1".serviceConfig.Restart = "always";
 
   environment.systemPackages = with pkgs; [
     curl
