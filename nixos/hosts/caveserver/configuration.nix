@@ -59,6 +59,7 @@
           "networkmanager"
           "video"
           "wheel"
+          "minecraft"
         ];
         hashedPasswordFile = config.age.secrets.nullcube-pass.path;
         openssh.authorizedKeys.keys = [

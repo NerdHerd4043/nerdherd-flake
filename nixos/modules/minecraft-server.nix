@@ -37,6 +37,7 @@ in
         shell = pkgs.bashInteractive;
         createHome = true;
         home = "/home/minecraft";
+        homeMode = "770";
       };
       groups.minecraft = { };
     };
