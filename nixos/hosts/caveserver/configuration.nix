@@ -12,8 +12,7 @@
 
   herd = {
     ddclient.enable = true;
-    # TODO: Enable after testing
-    # minecraft-server.enable = true;
+    minecraft-server.enable = true;
   };
 
   networking = {
