@@ -63,7 +63,7 @@
         ];
         hashedPasswordFile = config.age.secrets.nullcube-pass.path;
         openssh.authorizedKeys.keys = [
-          # TODO: Add ssh keys
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGrPcaW3xInHVO2toJ8awiJlvgy8USQ9Rhynf2Yk8w8M nullcube@Vulcan"
         ];
       };
 
