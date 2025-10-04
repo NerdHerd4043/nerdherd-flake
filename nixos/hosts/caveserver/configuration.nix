@@ -22,9 +22,9 @@
   };
 
   age.secrets = {
-    bryan-pass.file = self + "/secrets/bryan-pass.age";
+    # bryan-pass.file = self + "/secrets/bryan-pass.age";
     nullcube-pass.file = self + "/secrets/nullcube-pass.age";
-    ravenshade-pass.file = self + "/secrets/ravenshade-pass.age";
+    # ravenshade-pass.file = self + "/secrets/ravenshade-pass.age";
   };
 
   hardware.graphics = {
