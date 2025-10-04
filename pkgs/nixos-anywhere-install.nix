@@ -24,7 +24,7 @@ pkgs.writeShellApplication {
       # Create the directory where sshd expects to find the host keys
       install -d -m755 "$temp/etc/ssh"
 
-      ssh-keygen -t ed25519 -f "$temp/etc/ssh/ssh_host_ed25519_key" -N ""
+      ssh-keygen -t ed25519 -f "$temp/etc/ssh/ssh_host_ed25519_key" -N "" -C "root"
 
       pub=$(cat "$temp/etc/ssh/ssh_host_ed25519_key.pub")
 
