@@ -17,7 +17,7 @@
 
   networking = {
     hostName = "caveserver";
-    fqdn = "emerald.nerdherd4043.org";
+    domain = "nerdherd4043.org";
   };
 
   age.secrets = {
