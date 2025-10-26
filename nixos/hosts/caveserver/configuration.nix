@@ -1,8 +1,7 @@
-{
-  config,
-  self,
-  pkgs,
-  ...
+{ config
+, self
+, pkgs
+, ...
 }:
 {
   imports = [
@@ -23,7 +22,7 @@
   age.secrets = {
     # bryan-pass.file = self + "/secrets/bryan-pass.age";
     nullcube-pass.file = self + "/secrets/nullcube-pass.age";
-    # ravenshade-pass.file = self + "/secrets/ravenshade-pass.age";
+    ravenshade-pass.file = self + "/secrets/ravenshade-pass.age";
   };
 
   hardware.graphics = {
@@ -70,8 +69,7 @@
       ravenshade = {
         isNormalUser = true;
         description = "Zynh";
-        # TODO: Add ravenshade password
-        # hashedPasswordFile = config.age.secrets.ravenshade-pass.path;
+        hashedPasswordFile = config.age.secrets.ravenshade-pass.path;
         extraGroups = [
           "networkmanager"
           "video"
