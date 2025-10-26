@@ -78,7 +78,7 @@
           "wheel"
         ];
         openssh.authorizedKeys.keys = [
-          # TODO: Add ssh keys
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE3F17CzT8wMG367EPHGnEamv9pvZ61YXaFdoOuDKHWC ravenshade@snowhawk"
         ];
       };
     };

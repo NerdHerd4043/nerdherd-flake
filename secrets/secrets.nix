@@ -5,6 +5,7 @@ let
 
   # Users (for acccess)
   nullcube = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ8qUgVoBKq5DdokVxzqQmIbrpkvp09s8o3PjAO3HuLr";
+  ravenshade = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE3F17CzT8wMG367EPHGnEamv9pvZ61YXaFdoOuDKHWC";
 
   keys = [
     # Systems
@@ -13,6 +14,7 @@ let
 
     # Users (for access)
     nullcube
+    ravenshade
   ];
 in
 {
