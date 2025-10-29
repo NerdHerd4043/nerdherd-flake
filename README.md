@@ -12,7 +12,29 @@ Home-Manager configurations are under [home/hosts/](./home/hosts/).
 
 ***P***it Computer. Currently just for displaying a livestream of the current FRC event.
 
-Specs: **TODO**
+Services: N/A
+
+Specs:
+- Intel Core i5-6500T (2c/4t)
+- Intel HD Graphics 530 (Integrated)
+- 16 GB RAM
+- 120 GB Storage
+
+
+### Caveserver
+
+Mentor's old PC turned into a server.
+
+Services:
+- Team Minecraft Server
+- (WIP) Team Wiki
+
+Specs:
+- Intel Core i7-4820K (4c/8t)
+- NVIDIA Quadro FX 3800
+- 16 GB RAM
+- 1TB Storage
+
 
 ## System Setup
 
