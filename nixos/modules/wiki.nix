@@ -34,5 +34,18 @@ in {
          ensureDBOwnership = true;
        }];
      };
+
+    services.nginx = {
+      enable = true;
+      virtualHosts = {
+        "wiki.nerdherd4043.org" = {
+          forceSSL = true;
+          useACMEHost = "nerdherd4043.org";
+          locations."/" = {
+            proxyPass = "http://127.0.0.1:3434";
+          };
+        };
+      };
+    };
    };
 }
