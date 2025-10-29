@@ -17,6 +17,7 @@ in
     ./nginx.nix
     ./nix.nix
     ./packages.nix
+    ./tailscale.nix
     ./wiki.nix
   ];
 
