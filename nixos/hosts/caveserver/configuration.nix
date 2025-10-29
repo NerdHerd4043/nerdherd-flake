@@ -12,6 +12,7 @@
   herd = {
     ddclient.enable = true;
     minecraft-server.enable = true;
+    wiki-js.enable = true;
   };
 
   networking = {
