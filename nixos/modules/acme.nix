@@ -4,11 +4,16 @@ let
   inherit (lib)
     mkEnableOption
     mkIf
+    mkOption
     ;
 in
 {
   options.herd.acme = {
     enable = mkEnableOption "acme module";
+    domain = mkOption {
+      default = config.networking.domain;
+      type = lib.types.str;
+    };
   };
 
   config = mkIf cfg.enable {
@@ -23,9 +28,9 @@ in
       };
 
       certs = {
-        "nerdherd4043.org" = {
+        "${cfg.domain}" = {
           dnsProvider = "cloudflare";
-          extraDomainNames = [ "*.nerdherd4043.org" ];
+          extraDomainNames = [ "*.${cfg.domain}" ];
         };
       };
     };
