@@ -1,7 +1,8 @@
-{ config
-, self
-, pkgs
-, ...
+{
+  config,
+  self,
+  pkgs,
+  ...
 }:
 {
   imports = [
@@ -12,6 +13,7 @@
   herd = {
     ddclient.enable = true;
     minecraft-server.enable = true;
+    tailscale.enable = true;
     wiki-js.enable = true;
   };
 
