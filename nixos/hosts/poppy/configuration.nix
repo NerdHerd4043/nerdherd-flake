@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./disk-configuration.nix
@@ -7,6 +7,7 @@
 
   herd = {
     networking.wifi.enable = true;
+    tailscale.enable = true;
   };
 
   networking.hostName = "poppy";
@@ -125,14 +126,6 @@
       serviceConfig.Restart = "always";
     };
   };
-
-  services.tailscale = {
-    enable = true;
-    useRoutingFeatures = "both";
-    openFirewall = true;
-  };
-
-  networking.firewall.trustedInterfaces = [ "tailscale0" ];
 
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
