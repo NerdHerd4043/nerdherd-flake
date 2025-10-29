@@ -9,6 +9,7 @@ let
 in
 {
   imports = [
+    ./acme.nix
     ./audio.nix
     ./boot.nix
     ./ddclient.nix
