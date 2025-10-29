@@ -22,4 +22,5 @@ in
   "cf-dns-token.age".publicKeys = keys;
   "nullcube-pass.age".publicKeys = keys;
   "ravenshade-pass.age".publicKeys = keys;
+  "tailscale-auth-key.age".publicKeys = keys;
 }

@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  self,
   ...
 }:
 let
@@ -18,6 +19,10 @@ in
   };
 
   config = mkIf cfg.enable {
+    age.secrets = {
+      tailscale-auth-key.file = self + "/secrets/tailscale-auth-key.age";
+    };
+
     services.tailscale = {
       enable = true;
       useRoutingFeatures = "both";
