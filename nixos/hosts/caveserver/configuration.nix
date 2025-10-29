@@ -15,6 +15,8 @@
     minecraft-server.enable = true;
     tailscale.enable = true;
     wiki-js.enable = true;
+    acme.enable = true;
+    nginx.enable = true;
   };
 
   networking = {
