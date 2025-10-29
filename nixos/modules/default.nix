@@ -12,11 +12,12 @@ in
     ./audio.nix
     ./boot.nix
     ./ddclient.nix
-    ./wiki.nix
     ./minecraft-server.nix
     ./networking.nix
+    ./nginx.nix
     ./nix.nix
     ./packages.nix
+    ./wiki.nix
   ];
 
   options.herd.defaults = mkEnableOption "herd defaults" // {
