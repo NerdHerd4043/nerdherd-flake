@@ -1,7 +1,14 @@
-{ pkgs, ... }:
-pkgs.writeShellApplication {
-  name = "Nixos-Anywhere Installer";
-  runtimeInputs = with pkgs; [
+{
+  writeShellApplication,
+  nixos-anywhere,
+  coreutils-full,
+  openssh,
+  agenix,
+  ...
+}:
+writeShellApplication {
+  name = "nixos-anywhere-install";
+  runtimeInputs = [
     nixos-anywhere
     coreutils-full
     openssh

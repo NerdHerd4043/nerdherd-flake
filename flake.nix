@@ -53,7 +53,7 @@
           formatter = pkgs.nixfmt-rfc-style;
 
           packages = {
-            nixos-anywhere-install = import ./pkgs/nixos-anywhere-install.nix { inherit pkgs; };
+            nixos-anywhere-install = pkgs.callPackage ./pkgs/nixos-anywhere-install.nix { };
           };
 
           devShells = {
