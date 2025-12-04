@@ -1,11 +1,26 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  self,
+  ...
+}:
 let
   cfg = config.herd;
-  mkTrue = lib.mkOverride 1100 true;
   inherit (lib)
-    mkIf
+    concatStringsSep
+    match
+    mkDefault
     mkEnableOption
+    mkIf
+    mkOverride
     ;
+
+  mkTrue = mkOverride 1100 true;
+
+  # Takes the lastModifiedDate which is YYYYMMDDHHmmss
+  # and converts it into YYYY-MM-DD.
+  # Assumes source is entirely digits.
+  date = concatStringsSep "-" (match "^(.{4})(.{2})(.{2}).*$" self.lastModifiedDate);
 in
 {
   imports = [
@@ -26,11 +41,18 @@ in
     default = true;
   };
 
-  config.herd = mkIf cfg.defaults {
-    audio.enable = mkTrue;
-    boot.enable = mkTrue;
-    networking.enable = mkTrue;
-    nix.enable = mkTrue;
-    packages.enable = mkTrue;
+  config = {
+    herd = mkIf cfg.defaults {
+      audio.enable = mkTrue;
+      boot.enable = mkTrue;
+      networking.enable = mkTrue;
+      nix.enable = mkTrue;
+      packages.enable = mkTrue;
+    };
+
+    system.image = {
+      id = mkDefault "cowflake";
+      version = mkDefault "${date}-${self.shortRev or self.dirtyShortRev}";
+    };
   };
 }
