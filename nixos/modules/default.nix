@@ -52,7 +52,7 @@ in
 
     system.image = {
       id = mkDefault "cowflake";
-      version = mkDefault "${date}-${self.shortRev or self.dirtyShortRev}";
+      version = mkDefault "${date}-${self.shortRev or self.dirtyShortRev or "no-rev"}";
     };
   };
 }
