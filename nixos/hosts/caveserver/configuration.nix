@@ -17,6 +17,7 @@
     wiki-js.enable = true;
     acme.enable = true;
     nginx.enable = true;
+    site-preview.enable = true;
   };
 
   networking = {
