@@ -33,6 +33,7 @@ in
     ./nginx.nix
     ./nix.nix
     ./packages.nix
+    ./site-preview.nix
     ./tailscale.nix
     ./wiki.nix
   ];
